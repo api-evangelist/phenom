@@ -1,0 +1,126 @@
+openapi: 3.0.3
+info:
+  title: Phenom Talent Experience Platform Applicants Jobs API
+  version: '1.0'
+  description: 'Phenom platform APIs for talent acquisition and experience management: job sync, candidate management, onboarding, applications and applicants, resume/JD parsing, SCIM-based user management, candidate tags, and AI skills prediction.'
+  contact:
+    name: Phenom Developer Portal
+    url: https://developer.phenom.com/
+  termsOfService: https://www.phenom.com/terms--conditions
+servers:
+- url: https://api-qa.phenompro.com
+  description: QA / sandbox environment (documented base host)
+security:
+- bearerAuth: []
+tags:
+- name: Jobs
+  description: Job Sync — view, create, update and delete jobs in the Phenom database.
+paths:
+  /jobs-api/v1/jobs:
+    get:
+      operationId: getJobs
+      tags:
+      - Jobs
+      summary: Get jobs by search params
+      description: Retrieves a list of jobs based on search parameters.
+      parameters:
+      - name: jobId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: locale
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: category
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: siteType
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobsSearchResponse'
+        4XX:
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    JobsSearchResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Status of the response.
+        offset:
+          type: integer
+          description: Point from which to query for jobs.
+        limit:
+          type: integer
+          description: How many jobs to query.
+        totalRecordsCount:
+          type: integer
+          description: Total number of jobs for the query.
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobResponseDTO'
+    JobResponseDTO:
+      type: object
+      properties:
+        applyUrl:
+          type: string
+          description: Apply url of the job.
+        ats:
+          type: string
+          description: ATS of the job.
+        category:
+          type: string
+          description: Phenom job category.
+        externalApply:
+          type: boolean
+          description: Whether the job shows an external Apply button.
+        companyName:
+          type: string
+          description: Tenant name.
+        description:
+          type: string
+          description: Job description.
+    ErrorResponse:
+      type: object
+      description: Standard error response returned for all 4xx and 5xx responses.
+      properties:
+        status:
+          type: integer
+          description: HTTP status code of the error.
+        message:
+          type: string
+          description: Human-readable description of the error.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Bearer token supplied in the Authorization header. Documented on every operation as `Authorization: <token>`.'

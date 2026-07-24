@@ -1,0 +1,81 @@
+openapi: 3.0.3
+info:
+  title: Phenom Talent Experience Platform Applicants User Management API
+  version: '1.0'
+  description: 'Phenom platform APIs for talent acquisition and experience management: job sync, candidate management, onboarding, applications and applicants, resume/JD parsing, SCIM-based user management, candidate tags, and AI skills prediction.'
+  contact:
+    name: Phenom Developer Portal
+    url: https://developer.phenom.com/
+  termsOfService: https://www.phenom.com/terms--conditions
+servers:
+- url: https://api-qa.phenompro.com
+  description: QA / sandbox environment (documented base host)
+security:
+- bearerAuth: []
+tags:
+- name: User Management
+  description: SCIM 2.0 user and group management.
+paths:
+  /user-management/v1/users/search:
+    post:
+      operationId: searchUsers
+      tags:
+      - User Management
+      summary: Search users
+      description: Search for users based on given filters (SCIM-backed user management).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSearchRequest'
+      responses:
+        '200':
+          description: OK
+        4XX:
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    UserSearchRequest:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        searchKeyword:
+          type: string
+        userIds:
+          type: array
+          items:
+            type: string
+        usernames:
+          type: array
+          items:
+            type: string
+        product:
+          type: object
+          properties:
+            productTitle:
+              type: string
+            roles:
+              type: array
+              items:
+                type: string
+    ErrorResponse:
+      type: object
+      description: Standard error response returned for all 4xx and 5xx responses.
+      properties:
+        status:
+          type: integer
+          description: HTTP status code of the error.
+        message:
+          type: string
+          description: Human-readable description of the error.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Bearer token supplied in the Authorization header. Documented on every operation as `Authorization: <token>`.'

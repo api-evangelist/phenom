@@ -1,0 +1,75 @@
+openapi: 3.0.3
+info:
+  title: Phenom Talent Experience Platform Applicants Tags API
+  version: '1.0'
+  description: 'Phenom platform APIs for talent acquisition and experience management: job sync, candidate management, onboarding, applications and applicants, resume/JD parsing, SCIM-based user management, candidate tags, and AI skills prediction.'
+  contact:
+    name: Phenom Developer Portal
+    url: https://developer.phenom.com/
+  termsOfService: https://www.phenom.com/terms--conditions
+servers:
+- url: https://api-qa.phenompro.com
+  description: QA / sandbox environment (documented base host)
+security:
+- bearerAuth: []
+tags:
+- name: Tags
+  description: Create, update and delete candidate tags.
+paths:
+  /tags-api/v1/tags:
+    post:
+      operationId: createTag
+      tags:
+      - Tags
+      summary: Create a tag
+      description: Create a candidate tag.
+      parameters:
+      - $ref: '#/components/parameters/PhUserId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTagRequest'
+      responses:
+        '200':
+          description: Tag created successfully.
+        '400':
+          description: Bad request — missing or invalid headers or tag name.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  parameters:
+    PhUserId:
+      name: x-ph-userId
+      in: header
+      required: true
+      schema:
+        type: string
+      description: Phenom user identifier context header (required on candidate/tag/applicant operations).
+  schemas:
+    ErrorResponse:
+      type: object
+      description: Standard error response returned for all 4xx and 5xx responses.
+      properties:
+        status:
+          type: integer
+          description: HTTP status code of the error.
+        message:
+          type: string
+          description: Human-readable description of the error.
+    CreateTagRequest:
+      type: object
+      required:
+      - tagName
+      properties:
+        tagName:
+          type: string
+          description: The name of the tag to be created.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Bearer token supplied in the Authorization header. Documented on every operation as `Authorization: <token>`.'

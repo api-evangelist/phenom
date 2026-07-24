@@ -1,0 +1,75 @@
+openapi: 3.0.3
+info:
+  title: Phenom Talent Experience Platform Applicants Prediction API
+  version: '1.0'
+  description: 'Phenom platform APIs for talent acquisition and experience management: job sync, candidate management, onboarding, applications and applicants, resume/JD parsing, SCIM-based user management, candidate tags, and AI skills prediction.'
+  contact:
+    name: Phenom Developer Portal
+    url: https://developer.phenom.com/
+  termsOfService: https://www.phenom.com/terms--conditions
+servers:
+- url: https://api-qa.phenompro.com
+  description: QA / sandbox environment (documented base host)
+security:
+- bearerAuth: []
+tags:
+- name: Prediction
+  description: Predict skills from job titles and provided skill sets.
+paths:
+  /prediction/v1/skills:
+    post:
+      operationId: predictSkills
+      tags:
+      - Prediction
+      summary: Predict skills
+      description: Predict skills based on job titles and provided skill sets.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SkillPredictionRequest'
+      responses:
+        '200':
+          description: OK
+        4XX:
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      description: Standard error response returned for all 4xx and 5xx responses.
+      properties:
+        status:
+          type: integer
+          description: HTTP status code of the error.
+        message:
+          type: string
+          description: Human-readable description of the error.
+    SkillPredictionRequest:
+      type: object
+      properties:
+        titles:
+          type: array
+          items:
+            type: string
+          description: List of titles.
+        skills:
+          type: array
+          items:
+            type: string
+          description: List of skills.
+        size:
+          type: integer
+          description: Number of skills to return.
+        source:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Bearer token supplied in the Authorization header. Documented on every operation as `Authorization: <token>`.'

@@ -1,0 +1,78 @@
+openapi: 3.0.3
+info:
+  title: Phenom Talent Experience Platform Applicants Onboarding API
+  version: '1.0'
+  description: 'Phenom platform APIs for talent acquisition and experience management: job sync, candidate management, onboarding, applications and applicants, resume/JD parsing, SCIM-based user management, candidate tags, and AI skills prediction.'
+  contact:
+    name: Phenom Developer Portal
+    url: https://developer.phenom.com/
+  termsOfService: https://www.phenom.com/terms--conditions
+servers:
+- url: https://api-qa.phenompro.com
+  description: QA / sandbox environment (documented base host)
+security:
+- bearerAuth: []
+tags:
+- name: Onboarding
+  description: Search candidates and retrieve onboarding information and attachments.
+paths:
+  /candidates-api/onboarding/v1/candidates/search:
+    post:
+      operationId: searchOnboardingCandidates
+      tags:
+      - Onboarding
+      summary: Search onboarding candidates
+      description: Search onboarding candidates by firstName, lastName and/or emailId with pagination.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CandidateSearchRequest'
+      responses:
+        '200':
+          description: Candidates matching the filters (may be empty).
+        4XX:
+          description: Client error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    CandidateSearchRequest:
+      type: object
+      required:
+      - filters
+      properties:
+        filters:
+          type: object
+          description: At least one non-blank filter is required; filters are combined with AND (exact, case-insensitive).
+          properties:
+            firstName:
+              type: string
+            lastName:
+              type: string
+            emailId:
+              type: string
+        from:
+          type: integer
+          description: Zero-based offset to start from.
+        size:
+          type: integer
+          description: Max candidates to return.
+    ErrorResponse:
+      type: object
+      description: Standard error response returned for all 4xx and 5xx responses.
+      properties:
+        status:
+          type: integer
+          description: HTTP status code of the error.
+        message:
+          type: string
+          description: Human-readable description of the error.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Bearer token supplied in the Authorization header. Documented on every operation as `Authorization: <token>`.'
