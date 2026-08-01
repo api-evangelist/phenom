@@ -1,0 +1,57 @@
+# generated: '2026-07-20'
+# method: generated
+# source: openapi/phenom-platform-openapi.yml (API Evangelist enrichment enhancements)
+overlay: 1.0.0
+info:
+  title: Phenom Talent Experience Platform — API Evangelist Enrichment Overlay
+  version: 1.0.0
+extends: ../openapi/phenom-platform-openapi.yml
+actions:
+  # Cross-link the enrichment artifacts this pipeline derived for the API.
+  - target: $.info
+    update:
+      x-artifacts:
+        authentication: authentication/phenom-authentication.yml
+        conventions: conventions/phenom-conventions.yml
+        errors: errors/phenom-error-codes.yml
+        lifecycle: lifecycle/phenom-lifecycle.yml
+        conformance: conformance/phenom-conventions.yml
+        data-model: data-model/phenom-data-model.yml
+        mcp: mcp/phenom-mcp.yml
+        skills: skills/_index.yml
+  # Record cross-cutting semantics we captured (bearer auth + required context header).
+  - target: $.info
+    update:
+      x-conventions:
+        authentication: bearer-token (Authorization header)
+        context_header: x-ph-userId (required on candidate/applicant/tag operations)
+        versioning: uri-path (v1/v2 run side by side)
+        idempotency: not-documented
+        rate_limiting: not-documented
+        error_envelope: custom {status, message} (not RFC 9457 problem+json)
+  # Tag list operations with the pagination style we documented.
+  - target: $.paths['/jobs-api/v1/jobs'].get
+    update:
+      x-pagination:
+        style: offset-limit
+        params: [offset, limit]
+  - target: $.paths['/apply/v2/applications'].get
+    update:
+      x-pagination:
+        style: offset-limit
+        params: [offset, limit]
+  - target: $.paths['/candidates-api/onboarding/v1/candidates/search'].post
+    update:
+      x-pagination:
+        style: from-size
+        request_params: [from, size]
+        response_fields: [pagination.total, pagination.size, pagination.from]
+  - target: $.paths['/candidates-api/applications/v1/jobs/{jobId}/applicants'].get
+    update:
+      x-pagination:
+        style: from-size
+        request_params: [from, size]
+  # Note the SCIM 2.0 conformance of the User Management surface.
+  - target: $.paths['/user-management/v1/users/search'].get
+    update:
+      x-standard: scim2

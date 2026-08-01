@@ -1,8 +1,15 @@
 aid: phenom
 name: Phenom
-description: 'Phenom is a company surfaced as a portfolio company of sierra-ventures and added to the
-  API Evangelist network as a stub for enrichment. Sector: hr-tech. This profile is a lead awaiting the
-  enrichment pipeline.'
+description: >-
+  Phenom is an HR technology company whose Intelligent Talent Experience platform
+  applies AI to every stage of the talent lifecycle — helping candidates find and
+  apply to the right jobs, recruiters and hiring managers source and engage talent,
+  employees grow, and HR teams operate more efficiently. The Phenom Developer Portal
+  exposes REST APIs for job sync, candidate management, onboarding, applications and
+  applicants, resume and job-description parsing, SCIM 2.0 user and group management,
+  candidate tagging, and AI-driven skills prediction, letting partners and ATS/HRIS
+  systems integrate with the Phenom platform. Phenom is headquartered in Ambler,
+  Pennsylvania and backed by Sierra Ventures among others.
 url: https://raw.githubusercontent.com/api-evangelist/phenom/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,13 +17,166 @@ x-backed-by:
 - sierra-ventures
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
+image: https://images.ctfassets.net/0d3i1kfsuaq3/7DvjJdtfMfhzvhrPvEwY2r/792d04789d00e1b6418b33be5c18762b/Phenom-Meta-Image.png
 tags:
 - Company
 - Hr Tech
-apis: []
+- Talent Experience
+- Recruiting
+- Applicant Tracking
+- Candidate Experience
+- Onboarding
+- SCIM
+- Resume Parsing
+- Skills
+- Artificial Intelligence
+apis:
+- aid: phenom:phenom-applicants-api
+  name: Phenom Applicants API
+  description: Fetch applicant data, hiring status and leads for a job.
+  humanURL: https://developer.phenom.com/
+  baseURL: https://api-qa.phenompro.com
+  tags:
+  - Applicants
+  properties:
+  - type: OpenAPI
+    url: openapi/phenom-applicants-api-openapi.yml
+  - type: Documentation
+    url: https://developer.phenom.com/apiDetail
+  - type: GettingStarted
+    url: https://developer.phenom.com/getStarted
+- aid: phenom:phenom-applications-api
+  name: Phenom Applications API
+  description: Combined candidate + job data for jobs a candidate has applied to.
+  humanURL: https://developer.phenom.com/
+  baseURL: https://api-qa.phenompro.com
+  tags:
+  - Applications
+  properties:
+  - type: OpenAPI
+    url: openapi/phenom-applications-api-openapi.yml
+  - type: Documentation
+    url: https://developer.phenom.com/apiDetail
+  - type: GettingStarted
+    url: https://developer.phenom.com/getStarted
+- aid: phenom:phenom-candidates-api
+  name: Phenom Candidates API
+  description: Add, update, delete and retrieve candidate records.
+  humanURL: https://developer.phenom.com/
+  baseURL: https://api-qa.phenompro.com
+  tags:
+  - Candidates
+  properties:
+  - type: OpenAPI
+    url: openapi/phenom-candidates-api-openapi.yml
+  - type: Documentation
+    url: https://developer.phenom.com/apiDetail
+  - type: GettingStarted
+    url: https://developer.phenom.com/getStarted
+- aid: phenom:phenom-jobs-api
+  name: Phenom Jobs API
+  description: Job Sync — view, create, update and delete jobs in the Phenom database.
+  humanURL: https://developer.phenom.com/
+  baseURL: https://api-qa.phenompro.com
+  tags:
+  - Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/phenom-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://developer.phenom.com/apiDetail
+  - type: GettingStarted
+    url: https://developer.phenom.com/getStarted
+- aid: phenom:phenom-onboarding-api
+  name: Phenom Onboarding API
+  description: Search candidates and retrieve onboarding information and attachments.
+  humanURL: https://developer.phenom.com/
+  baseURL: https://api-qa.phenompro.com
+  tags:
+  - Onboarding
+  properties:
+  - type: OpenAPI
+    url: openapi/phenom-onboarding-api-openapi.yml
+  - type: Documentation
+    url: https://developer.phenom.com/apiDetail
+  - type: GettingStarted
+    url: https://developer.phenom.com/getStarted
+- aid: phenom:phenom-parsers-api
+  name: Phenom Parsers API
+  description: Resume and job-description parsing/extraction.
+  humanURL: https://developer.phenom.com/
+  baseURL: https://api-qa.phenompro.com
+  tags:
+  - Parsers
+  properties:
+  - type: OpenAPI
+    url: openapi/phenom-parsers-api-openapi.yml
+  - type: Documentation
+    url: https://developer.phenom.com/apiDetail
+  - type: GettingStarted
+    url: https://developer.phenom.com/getStarted
+- aid: phenom:phenom-prediction-api
+  name: Phenom Prediction API
+  description: Predict skills from job titles and provided skill sets.
+  humanURL: https://developer.phenom.com/
+  baseURL: https://api-qa.phenompro.com
+  tags:
+  - Prediction
+  properties:
+  - type: OpenAPI
+    url: openapi/phenom-prediction-api-openapi.yml
+  - type: Documentation
+    url: https://developer.phenom.com/apiDetail
+  - type: GettingStarted
+    url: https://developer.phenom.com/getStarted
+- aid: phenom:phenom-tags-api
+  name: Phenom Tags API
+  description: Create, update and delete candidate tags.
+  humanURL: https://developer.phenom.com/
+  baseURL: https://api-qa.phenompro.com
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/phenom-tags-api-openapi.yml
+  - type: Documentation
+    url: https://developer.phenom.com/apiDetail
+  - type: GettingStarted
+    url: https://developer.phenom.com/getStarted
+- aid: phenom:phenom-user-management-api
+  name: Phenom User Management API
+  description: SCIM 2.0 user and group management.
+  humanURL: https://developer.phenom.com/
+  baseURL: https://api-qa.phenompro.com
+  tags:
+  - User Management
+  properties:
+  - type: OpenAPI
+    url: openapi/phenom-user-management-api-openapi.yml
+  - type: Documentation
+    url: https://developer.phenom.com/apiDetail
+  - type: GettingStarted
+    url: https://developer.phenom.com/getStarted
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 18
+  pass: local-v1
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -24,4 +184,56 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://phenompeople.com/
+  url: https://www.phenom.com/
+- type: DeveloperPortal
+  url: https://developer.phenom.com/
+- type: Documentation
+  url: https://developer.phenom.com/apiDetail
+- type: APIReference
+  url: https://developer.phenom.com/apiDetail
+- type: GettingStarted
+  url: https://developer.phenom.com/getStarted
+- type: Blog
+  url: https://www.phenom.com/blog
+- type: GitHubOrganization
+  url: https://github.com/phenompeople
+- type: Support
+  url: https://www.phenom.com/contact-us
+- type: Pricing
+  url: https://www.phenom.com/pricing
+- type: TermsOfService
+  url: https://www.phenom.com/terms--conditions
+- type: PrivacyPolicy
+  url: https://www.phenom.com/privacy-policy
+- type: TrustCenter
+  url: https://trust.phenom.com/
+- type: Security
+  url: https://www.phenom.com/vdp
+- type: OpenAPI
+  url: openapi/phenom-platform-openapi.yml
+- type: Authentication
+  url: authentication/phenom-authentication.yml
+- type: Conventions
+  url: conventions/phenom-conventions.yml
+- type: ErrorCatalog
+  url: errors/phenom-error-codes.yml
+- type: Lifecycle
+  url: lifecycle/phenom-lifecycle.yml
+- type: Conformance
+  url: conformance/phenom-conformance.yml
+- type: WellKnown
+  url: well-known/phenom-well-known.yml
+- type: SecurityTxt
+  url: well-known/phenom-security.txt
+- type: VulnerabilityDisclosure
+  url: security/phenom-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/phenom-domain-security.yml
+- type: MCPServer
+  url: mcp/phenom-mcp.yml
+- type: LLMsTxt
+  url: llms/phenom-llms.txt
+- type: DataModel
+  url: data-model/phenom-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml

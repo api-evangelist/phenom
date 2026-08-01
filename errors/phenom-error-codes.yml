@@ -1,0 +1,38 @@
+generated: '2026-07-20'
+method: searched
+source: https://developer.phenom.com/ (API reference cards; standard error response)
+format: custom
+envelope:
+  description: Standard error response returned for all 4xx and 5xx responses.
+  fields:
+  - name: status
+    type: integer
+    description: HTTP status code of the error.
+  - name: message
+    type: string
+    description: Human-readable description of the error.
+problems:
+- status: 400
+  title: Bad request
+  description: Missing or invalid headers, parameters, or body (e.g. missing tag name on Create Tag).
+  source_operation: openapi/phenom-platform-openapi.yml#createTag
+- status: 401
+  title: Unauthorized
+  description: Missing or invalid Authorization bearer token.
+- status: 403
+  title: Forbidden
+  description: Token lacks access to the requested tenant/resource.
+- status: 404
+  title: Not found
+  description: Requested resource (job, candidate, application) does not exist.
+- status: 429
+  title: Too many requests
+  description: Request throttled.
+- status: 500
+  title: Internal server error
+  description: Unexpected server-side error.
+notes: >-
+  Phenom returns a single custom error envelope ({status, message}) for all 4xx/5xx
+  responses rather than RFC 9457 problem+json. Specific 401/403/429 titles above are
+  standard HTTP semantics inferred from the bearer-auth + throttling model; only 400 and
+  the envelope shape are explicitly documented in the reference.

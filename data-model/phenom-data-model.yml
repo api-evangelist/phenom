@@ -1,0 +1,46 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/phenom-platform-openapi.yml
+entities:
+- name: Job
+  id_field: jobId
+  key_fields: [applyUrl, ats, category, companyName, externalApply, description]
+- name: Candidate
+  id_field: candidateId
+  key_fields: [firstName, middleName, lastName, employeeId, company, linkedInProfileURL, email]
+- name: Application
+  key_fields: [status, statusCode, candidateData, jobData]
+- name: Applicant
+  key_fields: [emails, hiringStatus, leads]
+- name: User
+  standard: scim2
+  key_fields: [userIds, usernames, product.roles]
+- name: Tag
+  id_field: tagName
+- name: Skill
+  key_fields: [titles, skills]
+relationships:
+- from: Application
+  to: Candidate
+  type: belongs_to
+  via: candidateData
+- from: Application
+  to: Job
+  type: belongs_to
+  via: jobId
+- from: Applicant
+  to: Job
+  type: belongs_to
+  via: jobId
+- from: Candidate
+  to: Tag
+  type: has_many
+  via: tags
+- from: Onboarding
+  to: Candidate
+  type: belongs_to
+  via: candidateId
+notes: >-
+  Derived from the documented Phenom platform operations. The Job–Candidate join is the
+  Application (candidate data + the job applied to); Applicants are candidates fetched in a
+  job context. Users are managed via SCIM 2.0.

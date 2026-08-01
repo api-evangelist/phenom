@@ -1,0 +1,61 @@
+generated: '2026-07-20'
+method: searched
+source: https://developer.phenom.com/ (API reference cards)
+authentication:
+  style: bearer-token
+  header: Authorization
+  context_header: x-ph-userId
+  see: authentication/phenom-authentication.yml
+content_type:
+  request: application/json
+  response: application/json
+  headers:
+    Content-type: application/json
+    Accept: application/json
+pagination:
+  styles:
+  - name: offset-limit
+    used_by:
+    - GET /jobs-api/v1/jobs
+    - GET /apply/v2/applications
+    params:
+    - offset
+    - limit
+  - name: from-size
+    used_by:
+    - POST /candidates-api/onboarding/v1/candidates/search
+    - GET /candidates-api/applications/v1/jobs/{jobId}/applicants
+    request_params:
+    - from
+    - size
+    response_fields:
+    - pagination.total
+    - pagination.size
+    - pagination.from
+    - totalRecordsCount
+idempotency:
+  documented: false
+  notes: >-
+    No idempotency-key header/parameter is documented across the Phenom API reference;
+    write operations (create/update/delete) are not advertised as idempotent.
+versioning:
+  scheme: uri-path
+  examples:
+  - v1
+  - v2
+  notes: Version is embedded in the resource path (e.g. /candidates-api/v2/candidates, /apply/v2/applications).
+error_envelope:
+  shape: custom
+  description: Standard error response returned for all 4xx and 5xx responses.
+  fields:
+  - status
+  - message
+  see: errors/phenom-error-codes.yml
+standards:
+  scim: '2.0'  # User Management APIs use the SCIM protocol
+rate_limiting:
+  documented: false
+cross_links:
+  errors: errors/phenom-error-codes.yml
+  lifecycle: lifecycle/phenom-lifecycle.yml
+  authentication: authentication/phenom-authentication.yml

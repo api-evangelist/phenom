@@ -1,0 +1,27 @@
+generated: '2026-07-20'
+method: searched
+source: https://developer.phenom.com/ (User Management / SCIM card)
+standards:
+- id: scim2
+  conforms: true
+  evidence: >-
+    User Management APIs explicitly use the SCIM 2.0 protocol to view, create, update and
+    delete users and groups programmatically.
+- id: oauth2
+  conforms: false
+  evidence: No OAuth2 authorization/token endpoints documented; auth is bearer-token in the Authorization header.
+- id: oidc
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use a custom {status, message} envelope, not application/problem+json.
+- id: rfc9116-security-txt
+  conforms: true
+  evidence: Published /.well-known/security.txt at www.phenom.com (see well-known/phenom-security.txt).
+- id: pagination
+  conforms: true
+  evidence: offset/limit and from/size pagination documented across list operations.
+notes: >-
+  Phenom operates a Trust Center at https://trust.phenom.com/ (JavaScript-rendered; named
+  certifications could not be read programmatically). No published compliance certifications
+  are captured here, so no Compliance pointer is emitted.

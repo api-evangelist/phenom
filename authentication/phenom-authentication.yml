@@ -1,0 +1,34 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/phenom-platform-openapi.yml
+docs: https://developer.phenom.com/getStarted
+summary:
+  types:
+  - http
+  scheme: bearer
+  context_headers:
+  - x-ph-userId
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  in: header
+  parameter: Authorization
+  description: >-
+    Every Phenom platform operation requires a bearer token supplied in the
+    Authorization request header (documented as `Authorization: <token>`).
+    Tokens/credentials are provisioned per tenant via the Phenom Developer Portal.
+  sources:
+  - openapi/phenom-platform-openapi.yml
+context_headers:
+- name: x-ph-userId
+  required_on:
+  - Candidates
+  - Applicants
+  - Tags
+  description: >-
+    Phenom user identifier that scopes the request to an acting user; required on
+    candidate, applicant and tag operations (header casing varies: x-ph-userId / x-ph-userid).
+notes: >-
+  User Management APIs implement the SCIM 2.0 protocol for provisioning users and groups.
+  No OAuth2 authorization/token endpoints are documented; auth is bearer-token based.

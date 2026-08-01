@@ -1,0 +1,30 @@
+{
+  "provider": "phenom",
+  "sources": [
+    "phenom-applicants-api-openapi.yml",
+    "phenom-applications-api-openapi.yml",
+    "phenom-candidates-api-openapi.yml",
+    "phenom-jobs-api-openapi.yml",
+    "phenom-onboarding-api-openapi.yml",
+    "phenom-parsers-api-openapi.yml",
+    "phenom-prediction-api-openapi.yml",
+    "phenom-tags-api-openapi.yml",
+    "phenom-user-management-api-openapi.yml"
+  ],
+  "outputs": [
+    "phenom-applicants-api-openapi.yml",
+    "phenom-applications-api-openapi.yml",
+    "phenom-candidates-api-openapi.yml",
+    "phenom-jobs-api-openapi.yml",
+    "phenom-onboarding-api-openapi.yml",
+    "phenom-parsers-api-openapi.yml",
+    "phenom-prediction-api-openapi.yml",
+    "phenom-tags-api-openapi.yml",
+    "phenom-user-management-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

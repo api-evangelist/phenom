@@ -1,0 +1,16 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/phenom-platform-openapi.yml
+skills:
+- file: phenom-search-jobs-and-applications.md
+  name: Search jobs and review applications
+  api: openapi/phenom-platform-openapi.yml
+  operations: [getJobs, getApplications, getApplicantsByJob]
+- file: phenom-source-candidate-and-tag.md
+  name: Source a candidate and tag them
+  api: openapi/phenom-platform-openapi.yml
+  operations: [getCandidate, createTag]
+- file: phenom-parse-resume-and-predict-skills.md
+  name: Parse a resume and predict skills
+  api: openapi/phenom-platform-openapi.yml
+  operations: [parseResume, predictSkills]

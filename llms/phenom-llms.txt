@@ -1,0 +1,35 @@
+# Phenom
+
+> Phenom's Intelligent Talent Experience platform applies AI across the talent lifecycle. The Phenom Developer Portal exposes REST APIs for jobs, candidates, onboarding, applications, applicants, resume/JD parsing, SCIM 2.0 user management, candidate tags, and AI skills prediction. Auth is a bearer token in the Authorization header (plus an x-ph-userId context header on candidate/tag/applicant operations).
+
+## APIs
+- [Phenom Talent Experience Platform API](https://developer.phenom.com/): Jobs, Candidates, Onboarding, Applications, Applicants, Parsers, User Management (SCIM), Tags, Prediction. Base host: https://api-qa.phenompro.com
+
+## Specs
+- [OpenAPI (harvested)](openapi/phenom-platform-openapi.yml): 9 documented operations across the platform.
+
+## Docs
+- [Developer Portal](https://developer.phenom.com/)
+- [API Reference](https://developer.phenom.com/apiDetail)
+- [Getting Started](https://developer.phenom.com/getStarted)
+
+## Artifacts
+- [Authentication](authentication/phenom-authentication.yml)
+- [Conventions](conventions/phenom-conventions.yml)
+- [Error catalog](errors/phenom-error-codes.yml)
+- [Lifecycle](lifecycle/phenom-lifecycle.yml)
+- [Conformance (SCIM 2.0)](conformance/phenom-conformance.yml)
+- [Data model](data-model/phenom-data-model.yml)
+- [MCP (candidate)](mcp/phenom-mcp.yml)
+- [Agent skills](skills/_index.yml)
+
+## Security
+- [security.txt](well-known/phenom-security.txt)
+- [Vulnerability disclosure](https://www.phenom.com/vdp)
+- [Trust Center](https://trust.phenom.com/)
+
+## Company
+- [Website](https://www.phenom.com/)
+- [Blog](https://www.phenom.com/blog)
+- [Pricing](https://www.phenom.com/pricing)
+- [GitHub](https://github.com/phenompeople)

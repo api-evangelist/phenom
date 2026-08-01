@@ -1,0 +1,335 @@
+openapi: 3.0.3
+# generated: '2026-07-20'
+# method: searched
+# source: https://developer.phenom.com/ (Jobs, Candidates, Onboarding, Applicants, Applications, Parsers, User Management, Tags, Prediction cards)
+# NOTE: Harvested from the Phenom Developer Portal API reference (developer.phenom.com).
+# Each path/method/parameter and the response envelope fields were captured verbatim
+# from the published documentation cards. Schemas are represented as documented; the
+# provider does not publish a single machine-readable OpenAPI file.
+info:
+  title: Phenom Talent Experience Platform API
+  version: '1.0'
+  description: >-
+    Phenom platform APIs for talent acquisition and experience management: job sync,
+    candidate management, onboarding, applications and applicants, resume/JD parsing,
+    SCIM-based user management, candidate tags, and AI skills prediction.
+  contact:
+    name: Phenom Developer Portal
+    url: https://developer.phenom.com/
+  termsOfService: https://www.phenom.com/terms--conditions
+servers:
+  - url: https://api-qa.phenompro.com
+    description: QA / sandbox environment (documented base host)
+tags:
+  - name: Jobs
+    description: Job Sync — view, create, update and delete jobs in the Phenom database.
+  - name: Candidates
+    description: Add, update, delete and retrieve candidate records.
+  - name: Onboarding
+    description: Search candidates and retrieve onboarding information and attachments.
+  - name: Applicants
+    description: Fetch applicant data, hiring status and leads for a job.
+  - name: Applications
+    description: Combined candidate + job data for jobs a candidate has applied to.
+  - name: Parsers
+    description: Resume and job-description parsing/extraction.
+  - name: User Management
+    description: SCIM 2.0 user and group management.
+  - name: Tags
+    description: Create, update and delete candidate tags.
+  - name: Prediction
+    description: Predict skills from job titles and provided skill sets.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Bearer token supplied in the Authorization header. Documented on every
+        operation as `Authorization: <token>`.
+  parameters:
+    PhUserId:
+      name: x-ph-userId
+      in: header
+      required: true
+      schema:
+        type: string
+      description: Phenom user identifier context header (required on candidate/tag/applicant operations).
+  schemas:
+    ErrorResponse:
+      type: object
+      description: Standard error response returned for all 4xx and 5xx responses.
+      properties:
+        status:
+          type: integer
+          description: HTTP status code of the error.
+        message:
+          type: string
+          description: Human-readable description of the error.
+    JobResponseDTO:
+      type: object
+      properties:
+        applyUrl: { type: string, description: Apply url of the job. }
+        ats: { type: string, description: ATS of the job. }
+        category: { type: string, description: Phenom job category. }
+        externalApply: { type: boolean, description: Whether the job shows an external Apply button. }
+        companyName: { type: string, description: Tenant name. }
+        description: { type: string, description: Job description. }
+    JobsSearchResponse:
+      type: object
+      properties:
+        status: { type: string, description: Status of the response. }
+        offset: { type: integer, description: Point from which to query for jobs. }
+        limit: { type: integer, description: How many jobs to query. }
+        totalRecordsCount: { type: integer, description: Total number of jobs for the query. }
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/JobResponseDTO' }
+    Candidate:
+      type: object
+      properties:
+        candidateId: { type: string, description: Unique identifier for the candidate. }
+        employeeId: { type: string, description: Employee profile ID associated with the candidate. }
+        firstName: { type: string }
+        middleName: { type: string }
+        lastName: { type: string }
+        company: { type: string, description: Company associated with the candidate. }
+        linkedInProfileURL: { type: string }
+    CandidateSearchRequest:
+      type: object
+      required: [filters]
+      properties:
+        filters:
+          type: object
+          description: At least one non-blank filter is required; filters are combined with AND (exact, case-insensitive).
+          properties:
+            firstName: { type: string }
+            lastName: { type: string }
+            emailId: { type: string }
+        from: { type: integer, description: Zero-based offset to start from. }
+        size: { type: integer, description: Max candidates to return. }
+    ApplyResponse:
+      type: object
+      properties:
+        status: { type: string }
+        statusCode: { type: string }
+        statusMessage: { type: string }
+        data:
+          type: array
+          items: { type: object }
+    ResumeRequest:
+      type: object
+      description: Request object to parse a resume using a base64 stream.
+      properties:
+        filename: { type: string, description: Resume file name. }
+        datastream: { type: string, description: Base64 encoded value. }
+    UserSearchRequest:
+      type: object
+      properties:
+        enabled: { type: boolean }
+        searchKeyword: { type: string }
+        userIds: { type: array, items: { type: string } }
+        usernames: { type: array, items: { type: string } }
+        product:
+          type: object
+          properties:
+            productTitle: { type: string }
+            roles: { type: array, items: { type: string } }
+    CreateTagRequest:
+      type: object
+      required: [tagName]
+      properties:
+        tagName: { type: string, description: The name of the tag to be created. }
+    SkillPredictionRequest:
+      type: object
+      properties:
+        titles: { type: array, items: { type: string }, description: List of titles. }
+        skills: { type: array, items: { type: string }, description: List of skills. }
+        size: { type: integer, description: Number of skills to return. }
+        source: { type: string }
+security:
+  - bearerAuth: []
+paths:
+  /jobs-api/v1/jobs:
+    get:
+      operationId: getJobs
+      tags: [Jobs]
+      summary: Get jobs by search params
+      description: Retrieves a list of jobs based on search parameters.
+      parameters:
+        - { name: jobId, in: query, required: false, schema: { type: string } }
+        - { name: locale, in: query, required: false, schema: { type: string } }
+        - { name: category, in: query, required: false, schema: { type: string } }
+        - { name: siteType, in: query, required: false, schema: { type: string } }
+        - { name: offset, in: query, required: false, schema: { type: string } }
+        - { name: limit, in: query, required: false, schema: { type: string } }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/JobsSearchResponse' }
+        '4XX':
+          description: Client error
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+  /candidates-api/v2/candidates:
+    get:
+      operationId: getCandidate
+      tags: [Candidates]
+      summary: Get candidate details
+      description: Fetch candidate details by candidateId, email, atsId or linkedInProfileUrl.
+      parameters:
+        - { $ref: '#/components/parameters/PhUserId' }
+        - { name: candidateId, in: query, required: false, schema: { type: string } }
+        - { name: email, in: query, required: false, schema: { type: string } }
+        - { name: atsId, in: query, required: false, schema: { type: string } }
+        - { name: linkedInProfileUrl, in: query, required: false, schema: { type: string } }
+      responses:
+        '200':
+          description: Successfully fetched the candidate details.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Candidate' }
+        '4XX':
+          description: Client error
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+  /candidates-api/onboarding/v1/candidates/search:
+    post:
+      operationId: searchOnboardingCandidates
+      tags: [Onboarding]
+      summary: Search onboarding candidates
+      description: Search onboarding candidates by firstName, lastName and/or emailId with pagination.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/CandidateSearchRequest' }
+      responses:
+        '200':
+          description: Candidates matching the filters (may be empty).
+        '4XX':
+          description: Client error
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+  /candidates-api/applications/v1/jobs/{jobId}/applicants:
+    get:
+      operationId: getApplicantsByJob
+      tags: [Applicants]
+      summary: Get applicants for a job
+      description: Fetch applicants for a job based on jobId.
+      parameters:
+        - { $ref: '#/components/parameters/PhUserId' }
+        - { name: jobId, in: path, required: true, schema: { type: string } }
+        - { name: from, in: query, required: true, schema: { type: integer } }
+        - { name: size, in: query, required: true, schema: { type: integer } }
+      responses:
+        '200':
+          description: OK
+        '4XX':
+          description: Client error
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+  /apply/v2/applications:
+    get:
+      operationId: getApplications
+      tags: [Applications]
+      summary: Get applications
+      description: Fetch a list of applications (candidate + job data).
+      parameters:
+        - { name: offset, in: query, required: false, schema: { type: integer } }
+        - { name: limit, in: query, required: false, schema: { type: integer } }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ApplyResponse' }
+        '4XX':
+          description: Client error
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+  /parser/resume/v1/parse:
+    post:
+      operationId: parseResume
+      tags: [Parsers]
+      summary: Parse a resume (base64)
+      description: Extract candidate information (name, contact, education, work experience, skills) from a resume.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/ResumeRequest' }
+      responses:
+        '200':
+          description: Resume parsed.
+        '4XX':
+          description: Client error
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+  /user-management/v1/users/search:
+    post:
+      operationId: searchUsers
+      tags: [User Management]
+      summary: Search users
+      description: Search for users based on given filters (SCIM-backed user management).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/UserSearchRequest' }
+      responses:
+        '200':
+          description: OK
+        '4XX':
+          description: Client error
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+  /tags-api/v1/tags:
+    post:
+      operationId: createTag
+      tags: [Tags]
+      summary: Create a tag
+      description: Create a candidate tag.
+      parameters:
+        - { $ref: '#/components/parameters/PhUserId' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/CreateTagRequest' }
+      responses:
+        '200':
+          description: Tag created successfully.
+        '400':
+          description: Bad request — missing or invalid headers or tag name.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+  /prediction/v1/skills:
+    post:
+      operationId: predictSkills
+      tags: [Prediction]
+      summary: Predict skills
+      description: Predict skills based on job titles and provided skill sets.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/SkillPredictionRequest' }
+      responses:
+        '200':
+          description: OK
+        '4XX':
+          description: Client error
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }

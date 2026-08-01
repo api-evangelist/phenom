@@ -1,0 +1,26 @@
+generated: '2026-07-20'
+method: searched
+source: https://developer.phenom.com/
+versioning:
+  scheme: uri-path
+  current:
+    candidates: v2
+    applications: v2
+    jobs: v1
+    onboarding: v1
+    parsers: v1
+    user_management: v1
+    tags: v1
+    prediction: v1
+  notes: Major version is carried in the resource path; v1 and v2 run side by side.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No public deprecation policy or RFC 8594 Sunset/Deprecation header support is documented.
+sla:
+  url: null
+status_page: null
+deprecated_operations: []
+notes: >-
+  No dedicated public status page or SLA page was found for the Phenom Developer APIs.
+  Security disclosure and trust posture are documented separately (see security/ and trust.phenom.com).

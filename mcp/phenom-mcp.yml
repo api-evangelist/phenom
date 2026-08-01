@@ -1,0 +1,38 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/phenom-platform-openapi.yml
+server:
+  name: phenom
+  transport: http
+notes: >-
+  No official hosted/remote Phenom MCP server was found. The tool list below is a candidate
+  derived one-to-one from documented Phenom platform operations.
+tools:
+- name: get_jobs
+  description: Retrieve a list of jobs based on search parameters.
+  source_operation: openapi/phenom-platform-openapi.yml#getJobs
+- name: get_candidate
+  description: Fetch candidate details by candidateId, email, atsId or linkedInProfileUrl.
+  source_operation: openapi/phenom-platform-openapi.yml#getCandidate
+- name: search_onboarding_candidates
+  description: Search onboarding candidates by name/email with pagination.
+  source_operation: openapi/phenom-platform-openapi.yml#searchOnboardingCandidates
+- name: get_applicants_by_job
+  description: Fetch applicants for a job by jobId.
+  source_operation: openapi/phenom-platform-openapi.yml#getApplicantsByJob
+- name: get_applications
+  description: Fetch a list of applications (candidate + job data).
+  source_operation: openapi/phenom-platform-openapi.yml#getApplications
+- name: parse_resume
+  description: Extract candidate information from a base64-encoded resume.
+  source_operation: openapi/phenom-platform-openapi.yml#parseResume
+- name: search_users
+  description: Search platform users (SCIM-backed).
+  source_operation: openapi/phenom-platform-openapi.yml#searchUsers
+- name: create_tag
+  description: Create a candidate tag.
+  source_operation: openapi/phenom-platform-openapi.yml#createTag
+- name: predict_skills
+  description: Predict skills from job titles and provided skill sets.
+  source_operation: openapi/phenom-platform-openapi.yml#predictSkills
