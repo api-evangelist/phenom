@@ -183,6 +183,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/phenom-platform-overlay.yaml
 - type: Website
   url: https://www.phenom.com/
 - type: DeveloperPortal
@@ -210,7 +212,7 @@ common:
 - type: Security
   url: https://www.phenom.com/vdp
 - type: OpenAPI
-  url: openapi/phenom-platform-openapi.yml
+  url: openapi/_original/phenom-platform-openapi.yml
 - type: Authentication
   url: authentication/phenom-authentication.yml
 - type: Conventions
