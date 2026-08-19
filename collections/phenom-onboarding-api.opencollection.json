@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phenom Talent Experience Platform Applicants Onboarding API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Onboarding",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search onboarding candidates",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-qa.phenompro.com/candidates-api/onboarding/v1/candidates/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search onboarding candidates by firstName, lastName and/or emailId with pagination."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

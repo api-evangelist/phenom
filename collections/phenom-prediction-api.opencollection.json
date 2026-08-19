@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phenom Talent Experience Platform Applicants Prediction API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Prediction",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Predict skills",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-qa.phenompro.com/prediction/v1/skills",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Predict skills based on job titles and provided skill sets."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

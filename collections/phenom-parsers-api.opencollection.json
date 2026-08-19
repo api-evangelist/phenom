@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phenom Talent Experience Platform Applicants Parsers API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Parsers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Parse a resume (base64)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-qa.phenompro.com/parser/resume/v1/parse",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Extract candidate information (name, contact, education, work experience, skills) from a resume."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

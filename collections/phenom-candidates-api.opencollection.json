@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phenom Talent Experience Platform Applicants Candidates API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Candidates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get candidate details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-qa.phenompro.com/candidates-api/v2/candidates",
+            "headers": [
+              {
+                "name": "x-ph-userId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "candidateId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "atsId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "linkedInProfileUrl",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetch candidate details by candidateId, email, atsId or linkedInProfileUrl."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

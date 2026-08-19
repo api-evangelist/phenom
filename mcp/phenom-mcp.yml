@@ -5,9 +5,8 @@ source: openapi/phenom-platform-openapi.yml
 server:
   name: phenom
   transport: http
-notes: >-
-  No official hosted/remote Phenom MCP server was found. The tool list below is a candidate
-  derived one-to-one from documented Phenom platform operations.
+notes: No official hosted/remote Phenom MCP server was found. The tool list below is a candidate derived
+  one-to-one from documented Phenom platform operations.
 tools:
 - name: get_jobs
   description: Retrieve a list of jobs based on search parameters.
@@ -36,3 +35,9 @@ tools:
 - name: predict_skills
   description: Predict skills from job titles and provided skill sets.
   source_operation: openapi/phenom-platform-openapi.yml#predictSkills
+deployment:
+  mode: none
+  verified: derived
+  tools: 9
+  checked: '2026-08-12'
+  source: catalog MCP census

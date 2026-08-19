@@ -1,0 +1,199 @@
+{
+  "item": [
+    {
+      "id": "d938c348-e24e-4700-ba5a-6773b6509355",
+      "name": "Onboarding",
+      "description": {
+        "content": "Search candidates and retrieve onboarding information and attachments.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5c6ce5cb-2de0-4333-9dd7-d57ed6feea89",
+          "name": "Search onboarding candidates",
+          "request": {
+            "name": "Search onboarding candidates",
+            "description": {
+              "content": "Search onboarding candidates by firstName, lastName and/or emailId with pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "candidates-api",
+                "onboarding",
+                "v1",
+                "candidates",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"filters\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"emailId\": \"<string>\"\n  },\n  \"from\": \"<integer>\",\n  \"size\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eb1fa624-8196-48d3-b51e-68530a81a33a",
+              "name": "Candidates matching the filters (may be empty).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "candidates-api",
+                    "onboarding",
+                    "v1",
+                    "candidates",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filters\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"emailId\": \"<string>\"\n  },\n  \"from\": \"<integer>\",\n  \"size\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e6391aac-3a76-497e-84dc-bd8960ef64f1",
+              "name": "Client error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "candidates-api",
+                    "onboarding",
+                    "v1",
+                    "candidates",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filters\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"emailId\": \"<string>\"\n  },\n  \"from\": \"<integer>\",\n  \"size\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7378,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-qa.phenompro.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cd1fcc4a-ebad-42f8-9e13-9fcbb644818a",
+    "name": "Phenom Talent Experience Platform Applicants Onboarding API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Phenom platform APIs for talent acquisition and experience management: job sync, candidate management, onboarding, applications and applicants, resume/JD parsing, SCIM-based user management, candidate tags, and AI skills prediction.\n\nContact Support:\n Name: Phenom Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

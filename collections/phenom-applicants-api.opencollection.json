@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Phenom Talent Experience Platform Applicants API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Applicants",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get applicants for a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-qa.phenompro.com/candidates-api/applications/v1/jobs/:jobId/applicants",
+            "headers": [
+              {
+                "name": "x-ph-userId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetch applicants for a job based on jobId."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

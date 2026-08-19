@@ -1,0 +1,196 @@
+{
+  "item": [
+    {
+      "id": "8cb9ea5a-12d9-463b-b8c8-9509b61084e8",
+      "name": "User Management",
+      "description": {
+        "content": "SCIM 2.0 user and group management.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d8231644-e0e7-4e46-b1d7-927446bbb8b4",
+          "name": "Search users",
+          "request": {
+            "name": "Search users",
+            "description": {
+              "content": "Search for users based on given filters (SCIM-backed user management).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user-management",
+                "v1",
+                "users",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"searchKeyword\": \"<string>\",\n  \"userIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"usernames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"product\": {\n    \"productTitle\": \"<string>\",\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "da52c153-135e-49d7-942a-158c24ebe9eb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-management",
+                    "v1",
+                    "users",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"searchKeyword\": \"<string>\",\n  \"userIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"usernames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"product\": {\n    \"productTitle\": \"<string>\",\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "40cb10d7-f384-4660-b59e-26a854ba6fa8",
+              "name": "Client error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-management",
+                    "v1",
+                    "users",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"searchKeyword\": \"<string>\",\n  \"userIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"usernames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"product\": {\n    \"productTitle\": \"<string>\",\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 869,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-qa.phenompro.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "009d3985-28e9-4008-8c39-a58c7fdfb209",
+    "name": "Phenom Talent Experience Platform Applicants User Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Phenom platform APIs for talent acquisition and experience management: job sync, candidate management, onboarding, applications and applicants, resume/JD parsing, SCIM-based user management, candidate tags, and AI skills prediction.\n\nContact Support:\n Name: Phenom Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

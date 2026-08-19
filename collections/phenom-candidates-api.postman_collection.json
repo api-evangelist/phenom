@@ -1,0 +1,241 @@
+{
+  "item": [
+    {
+      "id": "a4501854-04a7-4480-89e3-09d962bf7f50",
+      "name": "Candidates",
+      "description": {
+        "content": "Add, update, delete and retrieve candidate records.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "97dae0ed-a638-40b2-8b3d-36f583062b2e",
+          "name": "Get candidate details",
+          "request": {
+            "name": "Get candidate details",
+            "description": {
+              "content": "Fetch candidate details by candidateId, email, atsId or linkedInProfileUrl.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "candidates-api",
+                "v2",
+                "candidates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "candidateId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "atsId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "linkedInProfileUrl",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Phenom user identifier context header (required on candidate/tag/applicant operations).",
+                "key": "x-ph-userId",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e6c73b52-b666-494a-b957-bb2102a2b5ca",
+              "name": "Successfully fetched the candidate details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "candidates-api",
+                    "v2",
+                    "candidates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "candidateId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "atsId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "linkedInProfileUrl",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Phenom user identifier context header (required on candidate/tag/applicant operations).",
+                    "key": "x-ph-userId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"candidateId\": \"string\",\n  \"employeeId\": \"string\",\n  \"firstName\": \"string\",\n  \"middleName\": \"string\",\n  \"lastName\": \"string\",\n  \"company\": \"string\",\n  \"linkedInProfileURL\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b6c327a-8ad9-41b2-bcda-8abc109788c8",
+              "name": "Client error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "candidates-api",
+                    "v2",
+                    "candidates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "candidateId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "atsId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "linkedInProfileUrl",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Phenom user identifier context header (required on candidate/tag/applicant operations).",
+                    "key": "x-ph-userId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8377,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-qa.phenompro.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fc730d42-140a-42ca-a276-c6064678b5ea",
+    "name": "Phenom Talent Experience Platform Applicants Candidates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Phenom platform APIs for talent acquisition and experience management: job sync, candidate management, onboarding, applications and applicants, resume/JD parsing, SCIM-based user management, candidate tags, and AI skills prediction.\n\nContact Support:\n Name: Phenom Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

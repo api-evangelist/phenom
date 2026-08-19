@@ -1,0 +1,193 @@
+{
+  "item": [
+    {
+      "id": "15b6e672-228a-45d9-90df-0c656bdc5fab",
+      "name": "Prediction",
+      "description": {
+        "content": "Predict skills from job titles and provided skill sets.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0801dd34-49ca-4217-ba7c-b70de8eaa5e2",
+          "name": "Predict skills",
+          "request": {
+            "name": "Predict skills",
+            "description": {
+              "content": "Predict skills based on job titles and provided skill sets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "prediction",
+                "v1",
+                "skills"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skills\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"size\": \"<integer>\",\n  \"source\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3a0e0edf-8590-4cc5-bac1-31ff882e1e0c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prediction",
+                    "v1",
+                    "skills"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skills\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"size\": \"<integer>\",\n  \"source\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0cf5af67-8aab-455d-bd99-206be8a3649b",
+              "name": "Client error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prediction",
+                    "v1",
+                    "skills"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skills\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"size\": \"<integer>\",\n  \"source\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2047,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-qa.phenompro.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6e0b9636-aea8-44c0-9d57-598b521c39be",
+    "name": "Phenom Talent Experience Platform Applicants Prediction API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Phenom platform APIs for talent acquisition and experience management: job sync, candidate management, onboarding, applications and applicants, resume/JD parsing, SCIM-based user management, candidate tags, and AI skills prediction.\n\nContact Support:\n Name: Phenom Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}
