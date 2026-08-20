@@ -35,6 +35,18 @@ modified: '2026-07-20'
 image: https://images.ctfassets.net/0d3i1kfsuaq3/7DvjJdtfMfhzvhrPvEwY2r/792d04789d00e1b6418b33be5c18762b/Phenom-Meta-Image.png
 tags:
 - Company
+- HR Tech
+- Talent Experience
+- Recruiting
+- Applicant Tracking
+- Candidate Experience
+- Onboarding
+- SCIM
+- Resume Parsing
+- Skills
+- Artificial Intelligence
+tags_raw:
+- Company
 - Hr Tech
 - Talent Experience
 - Recruiting
@@ -66,6 +78,8 @@ apis:
   humanURL: https://developer.phenom.com/
   baseURL: https://api-qa.phenompro.com
   tags:
+  - Application
+  tags_raw:
   - Applications
   properties:
   - type: OpenAPI
@@ -94,6 +108,8 @@ apis:
   humanURL: https://developer.phenom.com/
   baseURL: https://api-qa.phenompro.com
   tags:
+  - Job
+  tags_raw:
   - Jobs
   properties:
   - type: OpenAPI
