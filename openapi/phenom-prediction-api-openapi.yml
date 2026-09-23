@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Phenom Talent Experience Platform Applicants Prediction API
+  title: Phenom Talent Experience Platform Prediction API
   version: '1.0'
   description: 'Phenom platform APIs for talent acquisition and experience management: job sync, candidate management, onboarding, applications and applicants, resume/JD parsing, SCIM-based user management, candidate tags, and AI skills prediction.'
   contact:
@@ -40,16 +40,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      description: Standard error response returned for all 4xx and 5xx responses.
-      properties:
-        status:
-          type: integer
-          description: HTTP status code of the error.
-        message:
-          type: string
-          description: Human-readable description of the error.
     SkillPredictionRequest:
       type: object
       properties:
@@ -68,6 +58,16 @@ components:
           description: Number of skills to return.
         source:
           type: string
+    ErrorResponse:
+      type: object
+      description: Standard error response returned for all 4xx and 5xx responses.
+      properties:
+        status:
+          type: integer
+          description: HTTP status code of the error.
+        message:
+          type: string
+          description: Human-readable description of the error.
   securitySchemes:
     bearerAuth:
       type: http

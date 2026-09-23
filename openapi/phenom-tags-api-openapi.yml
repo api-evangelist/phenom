@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Phenom Talent Experience Platform Applicants Tags API
+  title: Phenom Talent Experience Platform Tags API
   version: '1.0'
   description: 'Phenom platform APIs for talent acquisition and experience management: job sync, candidate management, onboarding, applications and applicants, resume/JD parsing, SCIM-based user management, candidate tags, and AI skills prediction.'
   contact:
@@ -41,14 +41,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
-  parameters:
-    PhUserId:
-      name: x-ph-userId
-      in: header
-      required: true
-      schema:
-        type: string
-      description: Phenom user identifier context header (required on candidate/tag/applicant operations).
   schemas:
     ErrorResponse:
       type: object
@@ -68,6 +60,14 @@ components:
         tagName:
           type: string
           description: The name of the tag to be created.
+  parameters:
+    PhUserId:
+      name: x-ph-userId
+      in: header
+      required: true
+      schema:
+        type: string
+      description: Phenom user identifier context header (required on candidate/tag/applicant operations).
   securitySchemes:
     bearerAuth:
       type: http

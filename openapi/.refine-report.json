@@ -1,15 +1,7 @@
 {
   "provider": "phenom",
   "sources": [
-    "phenom-applicants-api-openapi.yml",
-    "phenom-applications-api-openapi.yml",
-    "phenom-candidates-api-openapi.yml",
-    "phenom-jobs-api-openapi.yml",
-    "phenom-onboarding-api-openapi.yml",
-    "phenom-parsers-api-openapi.yml",
-    "phenom-prediction-api-openapi.yml",
-    "phenom-tags-api-openapi.yml",
-    "phenom-user-management-api-openapi.yml"
+    "_original/phenom-platform-openapi.yml"
   ],
   "outputs": [
     "phenom-applicants-api-openapi.yml",
@@ -25,6 +17,20 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "phenom-platform-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "phenom-applicants-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "phenom-applications-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "phenom-candidates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "phenom-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "phenom-onboarding-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "phenom-parsers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "phenom-prediction-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "phenom-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "phenom-user-management-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
