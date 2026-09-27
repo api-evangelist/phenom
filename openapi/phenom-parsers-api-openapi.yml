@@ -40,16 +40,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      description: Standard error response returned for all 4xx and 5xx responses.
-      properties:
-        status:
-          type: integer
-          description: HTTP status code of the error.
-        message:
-          type: string
-          description: Human-readable description of the error.
     ResumeRequest:
       type: object
       description: Request object to parse a resume using a base64 stream.
@@ -60,6 +50,16 @@ components:
         datastream:
           type: string
           description: Base64 encoded value.
+    ErrorResponse:
+      type: object
+      description: Standard error response returned for all 4xx and 5xx responses.
+      properties:
+        status:
+          type: integer
+          description: HTTP status code of the error.
+        message:
+          type: string
+          description: Human-readable description of the error.
   securitySchemes:
     bearerAuth:
       type: http
