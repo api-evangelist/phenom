@@ -40,16 +40,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      description: Standard error response returned for all 4xx and 5xx responses.
-      properties:
-        status:
-          type: integer
-          description: HTTP status code of the error.
-        message:
-          type: string
-          description: Human-readable description of the error.
     CandidateSearchRequest:
       type: object
       required:
@@ -71,6 +61,16 @@ components:
         size:
           type: integer
           description: Max candidates to return.
+    ErrorResponse:
+      type: object
+      description: Standard error response returned for all 4xx and 5xx responses.
+      properties:
+        status:
+          type: integer
+          description: HTTP status code of the error.
+        message:
+          type: string
+          description: Human-readable description of the error.
   securitySchemes:
     bearerAuth:
       type: http

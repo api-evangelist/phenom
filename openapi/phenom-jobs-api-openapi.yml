@@ -69,25 +69,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    JobsSearchResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          description: Status of the response.
-        offset:
-          type: integer
-          description: Point from which to query for jobs.
-        limit:
-          type: integer
-          description: How many jobs to query.
-        totalRecordsCount:
-          type: integer
-          description: Total number of jobs for the query.
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/JobResponseDTO'
     JobResponseDTO:
       type: object
       properties:
@@ -109,6 +90,25 @@ components:
         description:
           type: string
           description: Job description.
+    JobsSearchResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Status of the response.
+        offset:
+          type: integer
+          description: Point from which to query for jobs.
+        limit:
+          type: integer
+          description: How many jobs to query.
+        totalRecordsCount:
+          type: integer
+          description: Total number of jobs for the query.
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobResponseDTO'
     ErrorResponse:
       type: object
       description: Standard error response returned for all 4xx and 5xx responses.

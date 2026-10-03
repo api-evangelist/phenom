@@ -50,6 +50,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
+  parameters:
+    PhUserId:
+      name: x-ph-userId
+      in: header
+      required: true
+      schema:
+        type: string
+      description: Phenom user identifier context header (required on candidate/tag/applicant operations).
   schemas:
     ErrorResponse:
       type: object
@@ -61,14 +69,6 @@ components:
         message:
           type: string
           description: Human-readable description of the error.
-  parameters:
-    PhUserId:
-      name: x-ph-userId
-      in: header
-      required: true
-      schema:
-        type: string
-      description: Phenom user identifier context header (required on candidate/tag/applicant operations).
   securitySchemes:
     bearerAuth:
       type: http
