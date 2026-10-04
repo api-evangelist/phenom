@@ -1,0 +1,74 @@
+slug: phenom
+provider: Phenom
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 6
+edges:
+- tag: Applicants
+  spec_file: phenom-applicants-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.92
+  evidence: GET /candidates-api/applications/v1/jobs/{jobId}/applicants  getApplicantsByJob  Get applicants
+    for a job
+  reason: Retrieving applicants against a job requisition is core recruiting/hiring activity within Talent
+    Acquisition Management.
+- tag: Candidates
+  spec_file: phenom-candidates-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.92
+  evidence: GET /candidates-api/v2/candidates  getCandidate  Get candidate details; schema 'Candidate'
+  reason: Candidate records are the sourcing/recruiting data object of Talent Acquisition Management.
+- tag: Applications
+  spec_file: phenom-applications-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.88
+  evidence: 'GET /apply/v2/applications  getApplications  Get applications; description: ''talent acquisition
+    and experience management: job sync, candidate management, onboarding, applications and applicants'''
+  reason: Job application records in a talent acquisition platform map to recruiting/hiring under Talent
+    Acquisition Management.
+- tag: Jobs
+  spec_file: phenom-jobs-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.85
+  evidence: GET /jobs-api/v1/jobs  getJobs  Get jobs by search params; schema 'JobsSearchResponse'
+  reason: Job postings/requisitions searched by candidates in a recruiting platform are part of sourcing
+    and hiring. Slight ambiguity only in whether this is job-requisition management vs. career-site search,
+    both within Talent Acquisition.
+- tag: Onboarding
+  spec_file: phenom-onboarding-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.85
+  evidence: POST /candidates-api/onboarding/v1/candidates/search  searchOnboardingCandidates  Search onboarding
+    candidates
+  reason: New-hire onboarding of candidates is explicitly within Talent Acquisition Management ('sourcing,
+    recruiting, hiring, onboarding'); could alternatively touch HR Operations, hence not maximal confidence.
+- tag: Parsers
+  spec_file: phenom-parsers-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.75
+  evidence: POST /parser/resume/v1/parse  parseResume  Parse a resume (base64)
+  reason: Resume parsing within a talent-experience platform directly supports sourcing/recruiting candidate
+    data capture, i.e. Talent Acquisition Management. Schema 'ResumeRequest' and the vendor description
+    ('candidate management, onboarding, applications and applicants, resume/JD parsing') ground the HR
+    recruiting reading rather than generic document processing.

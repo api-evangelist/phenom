@@ -216,6 +216,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/phenom-capability-edges.yml
+  name: Phenom Business Capability Map
 - type: Overlay
   url: overlays/phenom-platform-overlay.yaml
 - type: Website
