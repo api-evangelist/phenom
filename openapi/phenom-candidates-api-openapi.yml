@@ -60,6 +60,16 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      description: Standard error response returned for all 4xx and 5xx responses.
+      properties:
+        status:
+          type: integer
+          description: HTTP status code of the error.
+        message:
+          type: string
+          description: Human-readable description of the error.
     Candidate:
       type: object
       properties:
@@ -80,16 +90,6 @@ components:
           description: Company associated with the candidate.
         linkedInProfileURL:
           type: string
-    ErrorResponse:
-      type: object
-      description: Standard error response returned for all 4xx and 5xx responses.
-      properties:
-        status:
-          type: integer
-          description: HTTP status code of the error.
-        message:
-          type: string
-          description: Human-readable description of the error.
   parameters:
     PhUserId:
       name: x-ph-userId
