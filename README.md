@@ -64,6 +64,138 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Phenom is a company surfaced as a portfolio company of sierra-ventures and added to the API Evangelist network as a stub for enrichment. Sector: hr-tech. This profile is a lead awaiting the enrichment pipeline.
+Phenom is an HR technology company whose Intelligent Talent Experience platform applies AI to every stage of the talent lifecycle — helping candidates find and apply to the right jobs, recruiters and hiring managers source and engage talent, employees grow, and HR teams operate more efficiently. The Phenom Developer Portal exposes REST APIs for job sync, candidate management, onboarding, applications and applicants, resume and job-description parsing, SCIM 2.0 user and group management, candidate tagging, and AI-driven skills prediction, letting partners and ATS/HRIS systems integrate with the Phenom platform. Phenom is headquartered in Ambler, Pennsylvania and backed by Sierra Ventures among others.
 
-Backed by: sierra-ventures — https://phenompeople.com/
+**Areas:** Company · Human Resources · Talent Experience · Recruiting · Applicant Tracking · Candidate Experience · Onboarding · SCIM · Resume Parsing · Skills · Artificial Intelligence
+
+## Phenom on APIs.io
+
+Everything profiled for Phenom is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/phenom/](https://apis.io/providers/phenom/)** — or go straight to one of the APIs or properties below.
+
+### APIs (9)
+
+- [Phenom Applicants API](https://apis.io/apis/phenom/phenom-applicants-api/) — Fetch applicant data, hiring status and leads for a job.
+- [Phenom Applications API](https://apis.io/apis/phenom/phenom-applications-api/) — Combined candidate + job data for jobs a candidate has applied to.
+- [Phenom Candidates API](https://apis.io/apis/phenom/phenom-candidates-api/) — Add, update, delete and retrieve candidate records.
+- [Phenom Jobs API](https://apis.io/apis/phenom/phenom-jobs-api/) — Job Sync — view, create, update and delete jobs in the Phenom database.
+- [Phenom Onboarding API](https://apis.io/apis/phenom/phenom-onboarding-api/) — Search candidates and retrieve onboarding information and attachments.
+- [Phenom Parsers API](https://apis.io/apis/phenom/phenom-parsers-api/) — Resume and job-description parsing/extraction.
+- [Phenom Prediction API](https://apis.io/apis/phenom/phenom-prediction-api/) — Predict skills from job titles and provided skill sets.
+- [Phenom Tags API](https://apis.io/apis/phenom/phenom-tags-api/) — Create, update and delete candidate tags.
+- [Phenom User Management API](https://apis.io/apis/phenom/phenom-user-management-api/) — SCIM 2.0 user and group management.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [phenom](https://apis.io/servers/phenom/phenom/)
+
+#### Collections (9)
+
+Postman and Open Collection request collections.
+
+- [Phenom Talent Experience Platform Applicants API](https://apis.io/collections/phenom/open-phenom-applicants-api/)
+- [Phenom Talent Experience Platform Applicants Applications API](https://apis.io/collections/phenom/open-phenom-applications-api/)
+- [Phenom Talent Experience Platform Applicants Candidates API](https://apis.io/collections/phenom/open-phenom-candidates-api/)
+- [Phenom Talent Experience Platform Applicants Jobs API](https://apis.io/collections/phenom/open-phenom-jobs-api/)
+- [Phenom Talent Experience Platform Applicants Onboarding API](https://apis.io/collections/phenom/open-phenom-onboarding-api/)
+- [Phenom Talent Experience Platform Applicants Parsers API](https://apis.io/collections/phenom/open-phenom-parsers-api/)
+- [Phenom Talent Experience Platform Applicants Prediction API](https://apis.io/collections/phenom/open-phenom-prediction-api/)
+- [Phenom Talent Experience Platform Applicants Tags API](https://apis.io/collections/phenom/open-phenom-tags-api/)
+- [Phenom Talent Experience Platform Applicants User Management API](https://apis.io/collections/phenom/open-phenom-user-management-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Phenom Platform Overlay](https://apis.io/overlays/phenom/phenom-platform-overlay/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Phenom Authentication](https://apis.io/security/phenom/phenom-authentication/)
+- [Phenom Domain Security](https://apis.io/security/phenom/phenom-domain-security/)
+- [Phenom Vulnerability Disclosure](https://apis.io/security/phenom/phenom-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Phenom Plans Pricing](https://apis.io/plans/phenom/phenom-plans-pricing/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.phenom.com/)
+- [Documentation](https://developer.phenom.com/apiDetail)
+- [Getting started](https://developer.phenom.com/getStarted)
+- [API reference](https://developer.phenom.com/apiDetail)
+- [Pricing](https://www.phenom.com/pricing)
+- [Support](https://www.phenom.com/contact-us)
+- [Blog](https://www.phenom.com/blog)
+- [Security](https://www.phenom.com/vdp)
+- [Trust centre](https://trust.phenom.com/)
+- [Terms of service](https://www.phenom.com/terms--conditions)
+- [Privacy policy](https://www.phenom.com/privacy-policy)
+- [GitHub](https://github.com/phenompeople)
+
+## API Evangelist rating
+
+**Kin Score 44.8** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 50.2 |
+| Contract governance | 18.2 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 58.9 |
+| Access clarity | 39.5 |
+
+**Agent readiness 22.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 32.7** — Employment & Payroll
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/phenom/](https://apis.io/providers/phenom/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Phenom: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/phenom/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
